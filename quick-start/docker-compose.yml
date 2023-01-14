@@ -1,4 +1,3 @@
-name: discdoor
 services:
   mongodb:
     container_name: dd-mongo
@@ -10,7 +9,7 @@ services:
   dd-user-service:
     container_name: dd-user-service
     restart: unless-stopped
-    image: gusfringgaming/dd-user-service:main
+    image: gusfringgaming/dd-user-service:latest
     ports:
     - 1927:1927
     env_file:
