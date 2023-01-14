@@ -14,3 +14,14 @@ services:
     - 1927:1927
     env_file:
     - ./config/user-service.env
+
+  dd-auth:
+    container_name: dd-auth
+    restart: unless-stopped
+    image: gusfringgaming/dd-auth:latest
+    volumes:
+    - type: bind
+      source: ./data/auth
+      target: /usr/src/auth/data
+    ports:
+    - 8082:8082

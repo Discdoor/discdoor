@@ -4,6 +4,8 @@ This folder is the data directory for a Quick Start setup of DiscDoor.
 
 Please review the values in the `.env` files located in `config/`. There is a high chance that something needs to be changed.
 
+Some config files may be stored in the `data/` folder.
+
 ## Known Issues
 
 Here are a list of known issues.
