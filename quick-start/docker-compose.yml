@@ -25,3 +25,14 @@ services:
       target: /usr/src/auth/data
     ports:
     - 8082:8082
+
+  dd-client:
+    container_name: dd-client
+    restart: unless-stopped
+    image: gusfringgaming/dd-client:latest
+    volumes:
+    - type: bind
+      source: ./data/client
+      target: /usr/src/client/data
+    ports:
+    - 4096:4096
