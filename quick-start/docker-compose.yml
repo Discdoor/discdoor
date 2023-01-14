@@ -1,6 +1,12 @@
 name: discdoor
 services:
- 
+  mongodb:
+    container_name: dd-mongo
+    restart: unless-stopped
+    image: mongo
+    ports:
+    - 27017:27017
+
   dd-user-service:
     container_name: dd-user-service
     restart: unless-stopped
@@ -9,10 +15,3 @@ services:
     - 1927:1927
     env_file:
     - ./config/user-service.env
-
-  mongodb:
-    container_name: dd-mongo
-    restart: unless-stopped
-    image: mongo
-    ports:
-    - 27017:27017
