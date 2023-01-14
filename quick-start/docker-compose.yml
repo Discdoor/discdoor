@@ -1,4 +1,5 @@
 services:
+  # MongoDB
   mongodb:
     container_name: dd-mongo
     restart: unless-stopped
@@ -6,6 +7,7 @@ services:
     ports:
     - 27017:27017
 
+  # User service
   dd-user-service:
     container_name: dd-user-service
     restart: unless-stopped
@@ -15,6 +17,7 @@ services:
     env_file:
     - ./config/user-service.env
 
+  # Authentication server
   dd-auth:
     container_name: dd-auth
     restart: unless-stopped
@@ -26,6 +29,7 @@ services:
     ports:
     - 8082:8082
 
+  # Client server
   dd-client:
     container_name: dd-client
     restart: unless-stopped
@@ -37,6 +41,7 @@ services:
     ports:
     - 4096:4096
 
+  # Gateway server
   dd-gateway:
     container_name: dd-gateway
     restart: unless-stopped
@@ -45,5 +50,26 @@ services:
     - type: bind
       source: ./data/gateway
       target: /usr/src/gw/data
+    ports:
+    - 9000:9000
+
+  # CDN server
+  dd-cdn:
+    container_name: dd-cdn
+    restart: unless-stopped
+    image: gusfringgaming/dd-cdn:latest
+    volumes:
+    - type: bind
+      source: ./data/cdn/cfg
+      target: /usr/src/cdn/data
+    - type: bind
+      source: ./data/cdn/attachments
+      target: /usr/src/cdn/content/attachments
+    - type: bind
+      source: ./data/cdn/avatars
+      target: /usr/src/cdn/content/avatars
+    - type: bind
+      source: ../client-assets
+      target: /usr/src/cdn/content/assets
     ports:
     - 9000:9000
