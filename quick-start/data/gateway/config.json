@@ -1,0 +1,11 @@
+{
+    "cors": {
+        "allowedHost": "http://localhost:4096"
+    },
+    "api": {
+        "version": "v1"
+    },
+    "http": {
+        "port": 9000
+    }
+}

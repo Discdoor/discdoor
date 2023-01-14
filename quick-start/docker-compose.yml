@@ -36,3 +36,14 @@ services:
       target: /usr/src/client/data
     ports:
     - 4096:4096
+
+  dd-gateway:
+    container_name: dd-gateway
+    restart: unless-stopped
+    image: gusfringgaming/dd-gateway:latest
+    volumes:
+    - type: bind
+      source: ./data/gateway
+      target: /usr/src/gw/data
+    ports:
+    - 9000:9000
