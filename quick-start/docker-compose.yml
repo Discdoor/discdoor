@@ -72,4 +72,4 @@ services:
       source: ../client-assets
       target: /usr/src/cdn/content/assets
     ports:
-    - 9000:9000
+    - 8083:8083
