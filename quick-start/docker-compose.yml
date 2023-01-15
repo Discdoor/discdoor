@@ -73,3 +73,17 @@ services:
       target: /usr/src/cdn/content/assets
     ports:
     - 8083:8083
+
+  # Messaging service
+  dd-msg-service:
+    container_name: dd-msg-service
+    restart: unless-stopped
+    image: gusfringgaming/dd-msg-service:latest
+    volumes:
+    - type: bind
+      source: ./data/msgsvc
+      target: /usr/src/msgsvc/data
+    ports:
+    - 1928:1928
+    env_file:
+    - ./config/msg-service.env
